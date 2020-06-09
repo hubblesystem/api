@@ -244,3 +244,22 @@ A partir desse ponto, prossiga para a aplicação e invoque outras procedures.
           }
 }
 ```
+
+# 
+
+### /api/v1.0/api_account_sp_mobile_autoriza_abastecimento?0={qrcode_cliente}&1={qrcode_bico}&2={placa_cliente}&3={url_foto}
+
+- ```{login}```: login da unidade organizacional solicitando a auotrização, peça ao seu gerente de operações.
+- ```{hash-md5-da-senha}```: Aplique o hash MD5 na senha antes de enviar.
+- Opcional: ```{id}```: identificador da requisição. O valor sempre retorna na requisição.
+
+Exemplo:
+
+https://api.sistemaaguia.com/api/v1/api_account_sp_mobile_autoriza_abastecimento?0=1&1=2&2=aaa-123&3=0a0dfk2fdkfjadkfadf.jpg
+
+Params:
+
+- ```0```: qrcode_cliente varchar(100) - id do cliente caputrado via qrcode.
+- ```1```: qrcode_bico varchar(100) - bico da bomba caputrado via qrcode.
+- ```2```: placa_cliente varchar(20) - placa capturada via foto (reconhecimento).
+- ```3```: url_foto varchar(200) - se foto foi digitada, fazer upload da foto para o s3 e informar o id da imagem.
