@@ -28,11 +28,11 @@ Portanto, você deve:
 # Restrições de Segurança:
 
 - métodos ```api_public_*```: podem ser invocados sem autenticação.
-- métodos ```api_account_*```: existe autorização de dispositivo e autenticação de usuário para acesso.
+- métodos ```api_account_*```: exige autorização de dispositivo e autenticação de usuário para acesso.
 
 # Instruções de Gestão de Segurança na Plataforma Águia:
 
-- Após autorizar cadastrar o dispositivo, é necessário que o gestor autorize o dispositivo para autenticação e acesso a serviços via API.
+- Após autorizar e cadastrar o dispositivo, é necessário que o gestor autorize o dispositivo para autenticação e acesso a serviços via API.
 - No Painel de Gerenciamento vá em Autenticação e Autorizações e pesquise por novos dispositivos.
 
 # JSON-RPC
@@ -102,14 +102,14 @@ Exemplo:
 Descrição dos campos de resultado:
 
 - ```method```: o método requisitado ou método de erro de sistema.
-- ```success```: indica que a API foi executada com suces e você tem result.
+- ```success```: indica que a API foi executada com success e você tem result.
 - ```result```: é sempre um array, com o resultado na execução do serviço.
-- ```result[0].coderro```: se 0 indica sucess, se maior que um, ouve erro no processamento dos dados.
+- ```result[0].coderro```: se 0 indica success, se maior que um, ouve erro no processamento dos dados.
 - ```result[0].msgerro```: mensagem de erro para exibir ao usuário.
 
 Métodos de erro que podem se retornados:
  
-- ```AuthorizeDevice```: erro na autorizácão do dispositivo.
+- ```AuthorizeDevice```: erro na autorização do dispositivo.
 - ```noMethodId```: método não foi informado.
 - ```invalidPrefix```: falta prefixo de seguraça api_ na requisição.
 - ```accessDenied```: Requisição tentando acesso a métodos para somente usuário autenticado, mas, sem autenticar.
@@ -126,7 +126,7 @@ Métodos de erro que podem se retornados:
 
 - ```{cnpj}```: cnpj, somente números da empresa.
 - ```{unidade}```: login da unidade organizacional solicitando a auotrização, peça ao seu gerente de operações.
-- ```{imei}```: IMEI ou identificador único como um UUID do dispositivo. Preferencialmente, aplice o MD5 antes de enviar.
+- ```{imei}```: IMEI ou identificador único como um UUID do dispositivo. Preferencialmente, aplique o MD5 antes de enviar.
 - Opcional: ```{id}```: identificador da requisição. O valor sempre retorna na requisição.
 
 ## Exemplo:
@@ -155,7 +155,7 @@ Dispositivo autorizado na plataforma, prossiga para a tela de login:
 
 https://api.sistemaaguia.com/api/v1/AuthorizeDevice/55555555555555/nome/IMEI-122233334444FKDFDHFx
 
-Dispositivo cadastro, mas, ainda não habilitado, favor habilita na plataforma:
+Dispositivo cadastro, mas, ainda não habilitado, favor habilitar na plataforma:
 
 ```
 {
@@ -179,7 +179,7 @@ Dispositivo cadastro, mas, ainda não habilitado, favor habilita na plataforma:
 ## Autorizar Usuário
 
 * Essa é a segunda API que deve ser executada para autenticar o usuário.
-* Após autenticado, guarde os cookies recebidos e os envie sempre na requisição. Normalmente é o padrão para o SDK HTTPS desde que você configure um storage para os cookies. Vejas as opções do seu SDK.
+* Após autenticado, guarde os cookies recebidos e os envie sempre na requisição. Normalmente é o padrão para o SDK HTTPS desde que você configure o storage para os cookies. Vejas as opções do seu SDK.
 * A partir desse ponto, se sucesso, você está autenticado e já pode invocar outras API abaixo.
 
 https://api.sistemaaguia.com/api/v1/AuthorizeUser/nome1/dfafiadkjfadkfhadkfahdfkadaf?id=2
@@ -253,8 +253,8 @@ A partir desse ponto, prossiga para a aplicação e invoque outras procedures.
 
 ## Params:
 
-- ```0```: qrcode_cliente varchar(100) - id do cliente caputrado via qrcode.
-- ```1```: qrcode_bico varchar(100) - bico da bomba caputrado via qrcode.
+- ```0```: qrcode_cliente varchar(100) - id do cliente capturado via qrcode.
+- ```1```: qrcode_bico varchar(100) - bico da bomba capturado via qrcode.
 - ```2```: placa_cliente varchar(20) - placa capturada via foto (reconhecimento).
 - ```3```: url_foto varchar(200) - se foto foi digitada, fazer upload da foto para o s3 e informar o id da imagem.
 
