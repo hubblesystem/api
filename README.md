@@ -4,7 +4,11 @@ A Plataforma Águia disponibiliza API para acesso a serviços via aplicativos de
 
 Veja abaixo como implementar a integração com a Plataforma Águia em seu sistema ou site.
 
-# API de Comunicação com
+# Área de Teste
+
+Visite o endereço: https://api.sistemaaguia.com/api/v1 para testar a API, ao ler a documentação, copie e cole as call de API no formulário para ver o resultado.
+
+# API de Comunicação
 
 A API de comunicaçãom com o sistema água usa o protocolo HTTPS e a especificação JSON-RPC.
 
